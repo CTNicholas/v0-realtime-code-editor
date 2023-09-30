@@ -1,8 +1,12 @@
 import "../globals.css";
+import { Inter } from "next/font/google";
+import { CSSProperties } from "react";
 
 export const metadata = {
   title: "Liveblocks",
 };
+
+const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
   children,
@@ -25,7 +29,12 @@ export default function RootLayout({
           type="image/png"
         />
       </head>
-      <body>{children}</body>
+      <body
+        className={inter.className}
+        style={{ "--font-sans": inter.style.fontFamily } as CSSProperties}
+      >
+        {children}
+      </body>
     </html>
   );
 }

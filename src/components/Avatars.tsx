@@ -1,38 +1,39 @@
+"use client";
+
 import { useOthers, useSelf } from "@/liveblocks.config";
-import styles from "./Avatars.module.css";
 
 export function Avatars() {
   const users = useOthers();
   const currentUser = useSelf();
 
   return (
-    <div className={styles.avatars}>
+    <div className="flex items-center gap-2">
       {users.map(({ connectionId, info }) => {
-        return (
-          <Avatar key={connectionId} picture={info.picture} name={info.name} />
-        );
+        return <Avatar key={connectionId} color={info.color} />;
       })}
 
-      {currentUser && (
-        <div className="relative ml-8 first:ml-0">
-          <Avatar
-            picture={currentUser.info.picture}
-            name={currentUser.info.name}
-          />
-        </div>
-      )}
+      {currentUser && <Avatar color={currentUser.info.color} />}
     </div>
   );
 }
 
-export function Avatar({ picture, name }: { picture: string; name: string }) {
+export function Avatar({ color }: { color: string }) {
   return (
-    <div className={styles.avatar} data-tooltip={name}>
-      <img
-        src={picture}
-        className={styles.avatar_picture}
-        data-tooltip={name}
-      />
-    </div>
+    <svg
+      style={{ color }}
+      className=" h-5 w-5"
+      fill="none"
+      height="24"
+      stroke="currentColor"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      strokeWidth="2"
+      viewBox="0 0 24 24"
+      width="24"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
+      <circle cx="12" cy="7" r="4" />
+    </svg>
   );
 }

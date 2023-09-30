@@ -16,7 +16,6 @@ import { Toolbar } from "@/components/Toolbar";
 export function CollaborativeEditor() {
   const room = useRoom();
   const [element, setElement] = useState<HTMLElement>();
-  const [yUndoManager, setYUndoManager] = useState<Y.UndoManager>();
 
   // Get user info from Liveblocks authentication endpoint
   const userInfo = useSelf((me) => me.info);
@@ -41,7 +40,6 @@ export function CollaborativeEditor() {
     provider = new LiveblocksProvider(room as any, ydoc);
     const ytext = ydoc.getText("codemirror");
     const undoManager = new Y.UndoManager(ytext);
-    setYUndoManager(undoManager);
 
     // Attach user info to Yjs
     provider.awareness.setLocalStateField("user", {
@@ -73,15 +71,5 @@ export function CollaborativeEditor() {
     };
   }, [element, room, userInfo]);
 
-  return (
-    <div className={styles.container}>
-      <div className={styles.editorHeader}>
-        <div>
-          {yUndoManager ? <Toolbar yUndoManager={yUndoManager} /> : null}
-        </div>
-        <Avatars />
-      </div>
-      <div className={styles.editorContainer} ref={ref}></div>
-    </div>
-  );
+  return <div className={styles.editorContainer} ref={ref}></div>;
 }
