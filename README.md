@@ -2,7 +2,7 @@
 
 This demo shows you how to use [Liveblocks](https://liveblocks.io/) to build a real-time code editor. The UI was generared by [v0.dev](https://v0.dev/r/M7WGHpdFFJr).
 
-https://github.com/CTNicholas/v0-realtime-code-editor/assets/33033422/36ea807f-0459-4dd9-99b5-20f058240b52
+https://github.com/CTNicholas/v0-realtime-code-editor/assets/33033422/f1f84c31-5750-4525-8199-0ae457eda269
 
 ### Set up Liveblocks
 
