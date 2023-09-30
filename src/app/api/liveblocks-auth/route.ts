@@ -47,7 +47,7 @@ const USER_INFO = [
     color: "#ef4444",
   },
   {
-    name: "Anjali Wanda",
+    name: "Anjali",
     color: "#f59e0b",
   },
   {
